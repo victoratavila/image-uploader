@@ -35,6 +35,20 @@ input[type='file'] {
     font-size: 18px;
   }
 
+  label.labelDisabled {
+    pointer-events: none;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+    padding: 6px 20px;
+    border-color: #5B5694;
+    text-align: center;
+    width: 200px;
+    height: 40px;
+    transition: 0.3s;
+    font-size: 18px;
+  }
+
   label:hover {
     background-color: #685ed6;
     border-radius: 2px;
@@ -97,3 +111,8 @@ input[type='file'] {
   justify-content: center;
   align-items: center;
   }
+
+.deleteImageButton {
+  margin:auto;
+  display:block;
+}

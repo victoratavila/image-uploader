@@ -5,10 +5,13 @@ import api from './config/api';
 import {ReactComponent as Spinner} from './assets/spinner.svg';
 import invalidExtensionFile from './Components/Toasts/InvalidExtensionFile';
 import GeneralError from './Components/Toasts/GeneralError';
+import DeletedImage from './Components/Toasts/DeletedImage';
+import { Button } from 'react-bootstrap';
 
 function App() {
 
   const [imageLink, setImageLink] = useState(null);
+  const [deleteHash, setDeleteHash] = useState(null);
   const [loader, setLoader] = useState(false);
 
   async function submitImage(file){
@@ -18,10 +21,24 @@ function App() {
     setLoader(true);
     await api.post('/image', data).then(result => {
       setImageLink(result.data.data.link);
+      setDeleteHash(result.data.data.deletehash);
       setLoader(false);
     }).catch(err => {
       console.log(err);
       GeneralError();
+    })
+  }
+
+  async function deleteImage(deleteHash){
+    await api.delete(`/image/${deleteHash}`).then(data => {
+
+      if(data.data.success === true){
+        DeletedImage();
+        setImageLink(null);
+      }
+     
+    }).catch(err => {
+      console.log(err);
     })
   }
 
@@ -53,16 +70,22 @@ function App() {
           <form>
             
             <input onChange = {changeHandler} type = "file" id = "file" accept = "image/*"></input>
-            <label htmlFor = "file"> {loader === true ? <Spinner/> : 'Escolher imagem'} </label>
+            <label className = {loader === true ? 'labelDisabled' : ''}  htmlFor = "file"> {loader === true ? <Spinner/> : 'Escolher imagem'} </label>
           </form> 
         </div> 
 
        {imageLink ? (
 				<div>
-      <br/> <br/> <br/> 
+      <br/> <br/> 
       <p className = "successMessage">Upload concluído com sucesso! ✨</p>
       <a className = "imageLink" target="_blank" rel="noreferrer noopener" href = {imageLink}>{imageLink}</a>
-				
+      <br/>
+      
+      <div>
+       <Button onClick = {(() => deleteImage(deleteHash))} variant="danger" className = "deleteImageButton">Apagar imagem</Button>
+      </div>
+
+
 				</div>
 			) : (
         <div>
