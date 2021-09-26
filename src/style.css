@@ -1,0 +1,99 @@
+body {
+    background-color: #F5F5F5;
+}
+
+.base {
+    background-color: white;
+    height: 500px;
+    border-radius: 10px;
+}
+
+.title {
+    font-family: 'Arbutus Slab', serif;
+    color: #5B5694;
+    margin-top: 50px;
+    text-align: center;
+}
+
+
+input[type='file'] {
+    display: none
+  } 
+  
+  /* Aparência que terá o seletor de arquivo */
+ label {
+    background-color: #5B5694;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+    padding: 6px 20px;
+    border-color: #5B5694;
+    text-align: center;
+    width: 200px;
+    height: 40px;
+    transition: 0.3s;
+    font-size: 18px;
+  }
+
+  label:hover {
+    background-color: #685ed6;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+    padding: 6px 20px;
+    border-color: #5B5694;
+    text-align: center;
+    width: 200px;
+    height: 40px;
+    transition: 0.3s;
+    font-size: 18px;
+  }
+
+  .noFileSentYet {
+    font-size: 15px;
+    color: #8a8585;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  input::-webkit-file-upload-button {
+      background-color: #5B5694;
+      border: 0;
+      color: white;
+      text-align: center;
+      width: 200px;
+      height: 50px;
+  }
+
+  .formArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f3f39f;
+    height: 200px;
+    width: 100%;
+  }
+
+  .imagePreview {
+    height: 100px;
+    width: 100px;
+  }
+
+  .successMessage {
+    text-align: center;
+  }
+
+  .imageLink {
+    text-align: center;
+    display:block;
+    text-decoration: none;
+    color: #1C156F;
+    font-family: 'Arbutus Slab', serif;
+  }
+
+  .loadingSpinner {
+    text-align: center;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  }
